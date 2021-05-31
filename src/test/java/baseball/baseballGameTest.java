@@ -18,7 +18,7 @@ public class baseballGameTest {
 
     @DisplayName("난수 생성기")
     @Test
-    public void randomNum(){
+    public void randomNum() {
         assertEquals(3, baseball.randomNum().size());
     }
 
