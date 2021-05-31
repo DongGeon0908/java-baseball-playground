@@ -7,7 +7,9 @@ public class stringCalculator {
         stringCalculator strCal = new stringCalculator();
 
         // 문자열 입력받기
-        String value = strCal.input();
+        Scanner scanner = new Scanner(System.in);
+        String value = scanner.nextLine();
+        scanner.close();
 
         // 문자열 나누기
         String[] values = strCal.split(value);
@@ -39,17 +41,6 @@ public class stringCalculator {
         }
 
         System.out.println(result);
-    }
-
-    // 문자열 입력받기
-    String input() {
-        Scanner scanner = new Scanner(System.in);
-
-        String value = scanner.nextLine();
-
-        scanner.close();
-
-        return value;
     }
 
     // 문자열 나누기

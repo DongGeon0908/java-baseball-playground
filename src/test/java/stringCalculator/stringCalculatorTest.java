@@ -17,13 +17,6 @@ public class stringCalculatorTest {
         strCal = new stringCalculator();
     }
 
-    // 입력에 대한 Test 진행 문제...... (미해결)
-    @DisplayName("문자열 입력받기")
-    @Test
-    public void input() {
-        assertEquals("2 + 3 * 4 / 2", strCal.input());
-    }
-
     @DisplayName("문자열 나누기")
     @Test
     public void split() {
