@@ -42,25 +42,29 @@ public class stringCalculatorTest {
     @DisplayName("더하기")
     @Test
     public void add() {
-        assertEquals(10, strCal.add(5, 5));
+        int actual = strCal.add(5, 5);
+        assertEquals(10, actual);
     }
 
     @DisplayName("빼기")
     @Test
     public void subtract() {
-        assertEquals(10, strCal.subtract(20, 10));
+        int actual = strCal.subtract(20, 10);
+        assertEquals(10, actual);
     }
 
     @DisplayName("곱하기")
     @Test
     public void multiply() {
-        assertEquals(10, strCal.multiply(1, 10));
+        int actual = strCal.multiply(1, 10);
+        assertEquals(10, actual);
     }
 
     @DisplayName("나누기")
     @Test
     public void divide() {
-        assertEquals(5, strCal.divide(20, 4));
+        int actual = strCal.divide(20, 4);
+        assertEquals(5, actual);
     }
 
     @DisplayName("tearDown()")

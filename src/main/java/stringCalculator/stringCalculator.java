@@ -22,21 +22,21 @@ public class stringCalculator {
         
         // 연산 진행
         int result = num[0];
-        for (int i = 0; i < operator.length; i++) {
-            if (operator[i].equals("+")) {
-                result = strCal.add(result, num[i + 1]);
+        for (int index = 0; index < operator.length; index++) {
+            if (operator[index].equals("+")) {
+                result = strCal.add(result, num[index + 1]);
             }
 
-            if (operator[i].equals("-")) {
-                result = strCal.subtract(result, num[i + 1]);
+            if (operator[index].equals("-")) {
+                result = strCal.subtract(result, num[index + 1]);
             }
 
-            if (operator[i].equals("*")) {
-                result = strCal.multiply(result, num[i + 1]);
+            if (operator[index].equals("*")) {
+                result = strCal.multiply(result, num[index + 1]);
             }
 
-            if (operator[i].equals("/")) {
-                result = strCal.divide(result, num[i + 1]);
+            if (operator[index].equals("/")) {
+                result = strCal.divide(result, num[index + 1]);
             }
         }
 
@@ -55,9 +55,9 @@ public class stringCalculator {
         int[] num = new int[values.length / 2 + 1];
 
         int count = 0;
-        for (int Index = 0; Index < values.length; Index++) {
-            if (Index % 2 == 0) {
-                num[count++] = Integer.parseInt(values[Index]);
+        for (int index = 0; index < values.length; index++) {
+            if (index % 2 == 0) {
+                num[count++] = Integer.parseInt(values[index]);
             }
         }
 
@@ -69,9 +69,9 @@ public class stringCalculator {
         String[] operator = new String[values.length / 2];
 
         int count = 0;
-        for (int Index = 0; Index < values.length; Index++) {
-            if (Index % 2 != 0) {
-                operator[count++] = values[Index];
+        for (int index = 0; index < values.length; index++) {
+            if (index % 2 != 0) {
+                operator[count++] = values[index];
             }
         }
 
