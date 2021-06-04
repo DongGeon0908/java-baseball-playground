@@ -57,7 +57,7 @@ public class BaseballGame {
         return ballNum;
     }
 
-    // 값이 포함되어 있는지 비교
+    // 값이 포함되어 있는지 비교　－－ｂｏｏｌｅａｎ으로
     int contains(char num1, String num2) {
         if (num2.contains(String.valueOf(num1))) {
             return 1;

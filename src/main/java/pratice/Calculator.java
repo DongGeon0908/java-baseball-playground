@@ -1,6 +1,7 @@
 package pratice;
 
 public class Calculator {
+
     int add(int i, int j) {
         return i + j;
     }
@@ -23,6 +24,5 @@ public class Calculator {
         System.out.println(cal.subtract(5, 4));
         System.out.println(cal.multiply(2, 6));
         System.out.println(cal.divide(8, 4));
-
     }
 }
