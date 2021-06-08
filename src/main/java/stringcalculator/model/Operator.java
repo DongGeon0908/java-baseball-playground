@@ -1,4 +1,4 @@
-package stringcalculator;
+package stringcalculator.model;
 
 import java.util.Arrays;
 
@@ -6,22 +6,22 @@ public enum Operator {
 
     ADD("+") {
         @Override
-        public int Operation(int num1, int num2) {
+        public int operate(int num1, int num2) {
             return num1 + num2;
         }
     }, SUBTRACT("-") {
         @Override
-        public int Operation(int num1, int num2) {
+        public int operate(int num1, int num2) {
             return num1 - num2;
         }
     }, MULTIPLY("*") {
         @Override
-        public int Operation(int num1, int num2) {
+        public int operate(int num1, int num2) {
             return num1 * num2;
         }
     }, DIVIDE("/") {
         @Override
-        public int Operation(int num1, int num2) {
+        public int operate(int num1, int num2) {
             return num1 / num2;
         }
     };
@@ -39,5 +39,5 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다."));
     }
 
-    public abstract int Operation(int num1, int num2);
+    public abstract int operate(int num1, int num2);
 }
