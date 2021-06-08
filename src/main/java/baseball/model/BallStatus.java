@@ -1,35 +1,44 @@
 package baseball.model;
 
-import java.util.List;
-
 public class BallStatus {
     private boolean strike = false;
     private boolean ball = false;
 
-    public boolean getStrikeStatus(){
+    // 바로 메서드로 가져다 써도 편할것 같다....
+    private final UserBaseball userBaseball;
+    private final ComputerBaseball computerBaseball;
+
+    public BallStatus(UserBaseball userBaseball, ComputerBaseball computerBaseball, int location) {
+        this.userBaseball = userBaseball;
+        this.computerBaseball = computerBaseball;
+
+        isStrike(location);
+
+        if (!this.strike) {
+            isBall(location);
+        }
+    }
+
+    public boolean getStrikeStatus() {
         return this.strike;
     }
 
-    public boolean getBallStatus(){
+    public boolean getBallStatus() {
         return this.ball;
     }
 
-    public void setStrikeStatus(int num1, int num2) {
-        this.strike = isStrike(num1, num2);
+    private void isStrike(int location) {
+        int userBaseballNumber = userBaseball.getUserBaseball().get(location);
+        int computerBaseballNumber = computerBaseball.getComputerBaseball().get(location);
+        this.strike = userBaseballNumber == computerBaseballNumber;
     }
 
-    public void setBallStatus(List<Integer> num1, Integer num2) {
-        this.ball = isBall(num1, num2);
-    }
+    private void isBall(int location) {
+        int userBaseballNumber = userBaseball.getUserBaseball().get(location);
 
-    // 비교하는 로직이 BallStatus 책임인지..
-    private boolean isStrike(Integer num1, Integer num2) {
-        return num1.equals(num2);
-    }
-
-    // 비교하는 로직이 BallStatus 책임인지.. --> contains
-    private boolean isBall(List<Integer> num1, Integer num2) {
-        return num1.contains(num2);
+        if (computerBaseball.getComputerBaseball().contains(userBaseballNumber)) {
+            this.ball = true;
+        }
     }
 
 }

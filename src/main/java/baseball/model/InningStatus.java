@@ -1,49 +1,69 @@
 package baseball.model;
 
+import baseball.view.OutputView;
 
-// 게임 이겼는지 판단하는 것도 여기서 판단,,,
 public class InningStatus {
     private int strike = 0;
     private int ball = 0;
 
-    // 나띵이라는 변수를 쓸 필요가 있을까? -> isNothing이라는 메서드로 하면 좋을 것 같다.. 객체에 메세지를 던진다..
-    private boolean nothing = true;
 
-    public int getStrikeResult() {
-        if (this.strike != 0) {
-            setNothingResult();
-        }
-
-        return this.strike;
-    }
-
-    public void setStrikeResult(boolean isStrike) {
-        if (isStrike) {
+    public void inspectInningStatus(BallStatus ballStatus) {
+        if (ballStatus.getStrikeStatus()) {
             this.strike += 1;
         }
-    }
 
-    public int getBallResult() {
-        if (this.ball != 0) {
-            setNothingResult();
-        }
-
-        return this.ball;
-    }
-
-    public void setBallResult(boolean isBall) {
-        if (isBall) {
+        if (ballStatus.getBallStatus()) {
             this.ball += 1;
         }
     }
 
-    public boolean getNothingResult() {
-        return this.nothing;
+
+    public boolean inningResult() {
+        if (inningWin()) {
+            OutputView.successGame();
+            return true;
+        }
+
+        if (showInningBall()) {
+            OutputView.outputBallHint(this.ball);
+        }
+
+        if (showInningStrike()) {
+            OutputView.outputStrikeHint(this.strike);
+        }
+
+        if (showInningNothing()) {
+            OutputView.outputNothingHint();
+        }
+
+        return false;
     }
-    
-    // 외부에서 호출해서 값을 비교해서 사용되는 SRP를 깨트리느ㅜㄴ것이다...
-    private void setNothingResult() {
-        this.nothing = false;
+
+
+    public boolean inningWin() {
+        if (this.strike == 3) {
+            return true;
+        }
+        return false;
     }
+
+    private boolean showInningNothing() {
+        return !showInningStrike() && !showInningBall();
+    }
+
+    private boolean showInningBall() {
+        if (this.ball != 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean showInningStrike() {
+        if (this.strike != 0) {
+            return true;
+        }
+        return false;
+    }
+
 
 }

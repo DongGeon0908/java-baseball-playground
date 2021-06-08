@@ -2,6 +2,7 @@ package baseball.model;
 
 import java.util.Arrays;
 
+// 조금더 생각이 필요...
 public enum GameStatus {
     START("1"){
         @Override

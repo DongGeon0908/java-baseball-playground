@@ -1,30 +1,30 @@
 package baseball.service;
 
-import baseball.controller.InningGameController;
 import baseball.controller.InputUserNumberController;
+import baseball.model.BallStatus;
+import baseball.model.ComputerBaseball;
 import baseball.model.InningStatus;
-
-
-import java.util.List;
+import baseball.model.UserBaseball;
 
 public class PlayGame {
+    public void play() {
+        ComputerBaseball computerBaseball = new ComputerBaseball();
 
-    private final InningGameController inningGame;
+        for (int i : computerBaseball.getComputerBaseball()) {
+            System.out.print(i);
+        }
 
-    public PlayGame() {
-        this.inningGame = new InningGameController();
-    }
-
-    // baseballnumber 안에 컴퓨터넘버와 유저넘버가 존재,,,
-    // randomNumber를 받을 필요가.....매개변수로 1급 객체로 받도록
-    public void play(List<Integer> randomNumber) { // List<Integer> 이런식으로 받으면 노우노우 (역할과 책임,,,)
-        
         while (true) {
-            List<Integer> userNumber = new InputUserNumberController().inputUserNumber();
+            String userNumber = new InputUserNumberController().inputUserNumber();
+            UserBaseball userBaseball = new UserBaseball(userNumber);
+            InningStatus inningStatus = new InningStatus();
 
-            InningStatus resultStatus = new GameResult().compare(userNumber, randomNumber);
+            for (int index = 0; index < 3; index++) {
+                BallStatus ballStatus = new BallStatus(userBaseball, computerBaseball, index);
+                inningStatus.inspectInningStatus(ballStatus);
+            }
 
-            if (inningGame.showInningStatusResult(resultStatus)) {
+            if (inningStatus.inningResult()) {
                 break;
             }
 
