@@ -1,22 +1,23 @@
 package baseball.view;
 
-import baseball.util.InputUtil;
-import baseball.util.OutputUtil;
+import java.util.Scanner;
 
 public class InputView {
 
-    public String inputNumberMessage() {
-        OutputUtil.enterLine();
-        OutputUtil.stringOutput("숫자를 입력해 주세요 : ");
+    private static final Scanner scanner = new Scanner(System.in);
 
-        return InputUtil.input();
+    public String inputNumberMessage() {
+        System.out.println();
+        System.out.print("숫자를 입력해 주세요 : ");
+
+        return scanner.nextLine();
     }
 
     public String choiceGameMessage() {
-        OutputUtil.stringOutput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        OutputUtil.enterLine();
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println();
 
-        return InputUtil.input();
+        return scanner.nextLine();
     }
 
 }

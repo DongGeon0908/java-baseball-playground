@@ -4,7 +4,6 @@ public class BallStatus {
     private boolean strike = false;
     private boolean ball = false;
 
-    // 바로 메서드로 가져다 써도 편할것 같다....
     private final UserBaseball userBaseball;
     private final ComputerBaseball computerBaseball;
 
@@ -28,15 +27,17 @@ public class BallStatus {
     }
 
     private void isStrike(int location) {
-        int userBaseballNumber = userBaseball.getUserBaseball().get(location);
-        int computerBaseballNumber = computerBaseball.getComputerBaseball().get(location);
+
+        // baseball에서 비교를 담당하도록 해도 좋다.. // baseballNumber 2개를 비교하는것...--> 추상화 <- 컴퓨터, 유저
+        int userBaseballNumber = userBaseball.getBaseballNumber().get(location);
+        int computerBaseballNumber = computerBaseball.getBaseballNumber().get(location);
         this.strike = userBaseballNumber == computerBaseballNumber;
     }
 
     private void isBall(int location) {
-        int userBaseballNumber = userBaseball.getUserBaseball().get(location);
+        int userBaseballNumber = userBaseball.getBaseballNumber().get(location);
 
-        if (computerBaseball.getComputerBaseball().contains(userBaseballNumber)) {
+        if (computerBaseball.getBaseballNumber().contains(userBaseballNumber)) {
             this.ball = true;
         }
     }

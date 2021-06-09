@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.model.GameStatus;
-import baseball.util.CheckUtil;
+import baseball.util.StringUtil;
 import baseball.view.InputView;
 
 
@@ -26,7 +26,7 @@ public class KeepingGame {
 
         return GameStatus
                 .findByGameStatus(keepOrExitMessage)
-                .choiceGameStatus();
+                .isContinueGame();
     }
 
     private void choiceNumberSize(String input) {
@@ -36,7 +36,7 @@ public class KeepingGame {
     }
 
     private void choiceNumberForm(String input) {
-        if (!CheckUtil.checkNumberForm(input.charAt(0))) {
+        if (!StringUtil.isCharacter(input.charAt(0))) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }

@@ -2,17 +2,17 @@ package baseball.model;
 
 import java.util.Arrays;
 
-// 조금더 생각이 필요...
+
 public enum GameStatus {
-    START("1"){
+    START("1") {
         @Override
-        public boolean choiceGameStatus() {
+        public boolean isContinueGame() {
             return true;
         }
     },
-    EXIT("2"){
+    EXIT("2") {
         @Override
-        public boolean choiceGameStatus() {
+        public boolean isContinueGame() {
             return false;
         }
     };
@@ -30,6 +30,6 @@ public enum GameStatus {
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다."));
     }
 
-    public abstract boolean choiceGameStatus();
+    public abstract boolean isContinueGame();
 
 }

@@ -1,7 +1,6 @@
 package baseball.service;
 
-import baseball.model.GameStatus;
-import baseball.util.CheckUtil;
+import baseball.util.StringUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -17,7 +16,7 @@ public class KeepingGameTest {
             "2"
     })
     void choiceNumberFormSuccessTest(String inputTestCase) {
-        if (!CheckUtil.checkNumberForm(inputTestCase.charAt(0))) {
+        if (!StringUtil.isCharacter(inputTestCase.charAt(0))) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
@@ -30,7 +29,7 @@ public class KeepingGameTest {
             ")"
     })
     void choiceNumberFormFailTest(String inputTestCase) {
-        if (!CheckUtil.checkNumberForm(inputTestCase.charAt(0))) {
+        if (!StringUtil.isCharacter(inputTestCase.charAt(0))) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }

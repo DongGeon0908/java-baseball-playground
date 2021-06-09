@@ -11,10 +11,10 @@ public class PlayCalculator {
 
         String userInput = new InputView().input();
 
-        InputData validation = new InputData(userInput);
+        InputData inputData = new InputData(userInput);
+        
+        int result = new Calculator(inputData).getResult();
 
-        int result = new Calculator(validation).getResult();
-
-        new OutputView(result);
+        new OutputView().output(result);
     }
 }

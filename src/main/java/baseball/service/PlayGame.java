@@ -1,19 +1,19 @@
 package baseball.service;
 
 import baseball.controller.InputUserNumberController;
-import baseball.model.BallStatus;
-import baseball.model.ComputerBaseball;
-import baseball.model.InningStatus;
-import baseball.model.UserBaseball;
+import baseball.model.*;
 
 public class PlayGame {
     public void play() {
-        ComputerBaseball computerBaseball = new ComputerBaseball();
 
-        for (int i : computerBaseball.getComputerBaseball()) {
+        RandomNumber randomNumber = new RandomNumber();
+        ComputerBaseball computerBaseball = new ComputerBaseball(randomNumber.getRandomNumber());
+
+        for (int i : computerBaseball.getBaseballNumber()) {
             System.out.print(i);
         }
 
+        // 이런 while문 자체보다는 객체가 데이터를 가져서,,,
         while (true) {
             String userNumber = new InputUserNumberController().inputUserNumber();
             UserBaseball userBaseball = new UserBaseball(userNumber);
